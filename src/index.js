@@ -178,8 +178,14 @@ function handleStart(type) {
       }
       console.log('❌ 请先配置.env文件中的 CLAUDE_API_KEY 和 CLAUDE_MODEL')
       break
+    case 'Gemini':
+      if (env.GEMINI_API_KEY && env.GEMINI_MODEL) {
+        return botStart()
+      }
+      console.log('❌ 请先配置.env文件中的 GEMINI_API_KEY 和 GEMINI_MODEL')
+      break
     default:
-      console.log('❌ 服务类型错误, 目前支持： ChatGPT | doubao | deepseek | Kimi | Xunfei | DIFY | OLLAMA | TONGYI')
+      console.log('❌ 服务类型错误, 目前支持： ChatGPT | doubao | deepseek | Kimi | Xunfei | DIFY | OLLAMA | TONGYI | GEMINI')
   }
 }
 
@@ -196,6 +202,7 @@ export const serveList = [
   { name: 'ollama', value: 'ollama' },
   { name: 'tongyi', value: 'tongyi' },
   { name: 'claude', value: 'claude' },
+  { name: 'Gemini', value: 'Gemini' },
 ]
 const questions = [
   {
